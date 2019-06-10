@@ -7,7 +7,7 @@ float io;
 
 int edge=0;
 float distance=0;
-
+int pantallazo=0;
 void setup() {
   size(800, 740);
   color col = color(200, 180, 210) ;//color carritos
@@ -29,6 +29,7 @@ void setup() {
 void draw() {
   background(240);   
 
+	if(pantallazo==0){
   boolean hit1 = circleRect(playerList.get(0).cx, playerList.get(0).cy, playerList.get(0).r, carList.get(0).sx, carList.get(0).sy, carList.get(0).sw, carList.get(0).sh);
   if (hit1) {
     fill(255, 150, 0);
@@ -391,8 +392,14 @@ void draw() {
   }
   
   
+if (  playerList.get(0).cy > 330 || playerList.get(0).cy< 390) {
 
+        pantallazo=1;
+      }
+if (pantallazo==1) {
 
+       background(0);
+      }
 
   println(carList.size());
   for (int j=0; j<carList.size(); j++)
@@ -507,8 +514,7 @@ void draw() {
     carList.get(20).sh=height/7;
 
    
-
-
+ 
 
     carTemp.display();
   }
@@ -521,6 +527,9 @@ void draw() {
     playerTemp.display();
     playerTemp.move();
   }
+	}
+	
+
 }
 
 boolean circleRect(float cx, float cy, float radius, float rx, float ry, float rw, float rh) {
