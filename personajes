@@ -1,0 +1,29 @@
+import gifAnimation.*;
+
+PImage[] animation;
+Gif loopingGif;
+Gif nonLoopingGif;
+boolean pause = false;
+
+public void setup() {
+  size(400, 400);
+  frameRate(60);
+  
+  println("gifAnimation " + Gif.version());
+  // create the GifAnimation object for playback
+  loopingGif = new Gif(this, "lavalamp.gif");
+  loopingGif.loop();
+  nonLoopingGif = new Gif(this, "lavalamp.gif");
+  nonLoopingGif.play();
+  nonLoopingGif.ignoreRepeat();
+  animation = Gif.getPImages(this, "lavalamp.gif");
+}
+
+void draw() {
+  background(111);
+  image(loopingGif, 150, height/2  - loopingGif.height/2 );
+ }
+
+
+
+
